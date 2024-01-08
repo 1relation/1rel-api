@@ -1,188 +1,255 @@
-openapi: 3.0.0
-servers:
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/1Relation/1Relation-API/1.0.0
-  - description: Development
-    url: https://dev.1relation.com/api/v1
-  - description: Production
-    url: https://prod.1relation.com/api/v1
-info:
-  description: Use our API to do things within our platform
-  version: "1.0.0"
-  title: 1Relation API
-  contact:
-    email: contact@1relation.com
-  license:
-    name: GNU GPLv3
-    url: 'https://www.gnu.org/licenses/gpl-3.0.en.html'
-tags:
-  - name: Event
-    description: Calendar entries that are stored on each user                                                    
-  - name: Item                                                    
-    description: Containers for information tied to a specific object eg. a customer                                                    
-paths:
-  /Event:
-    put:
-      tags:
-        - Event
-      summary: Update an existing Event
-      description: Update an existing Event by Id
-      operationId: updateEvent
-      requestBody:
-        description: Update an existing Event
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Event'
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Event'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
-      security:
-        - auth:
-            - create:calendar
-    post:
-      tags:
-        - Event
-      summary: Create a new Event
-      description: Create a new Event
-      operationId: createEvent
-      requestBody:
-        description: Create a new Event
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Event'
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Event'
-        '405':
-          description: Invalid input
-      security:
-        - auth:
-            - update:calendar
-    delete:
-      tags:
-        - Event
-      summary: Delete Event
-      description: Delete Event
-      operationId: deleteEvent
-      parameters:
-        - name: id
-          in: query
-          description: Unique ID of Event
-          required: false
-          explode: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Event'
-        '405':
-          description: Invalid input
-      security:
-        - auth:
-            - delete:calendar
-    get:
-      tags:
-        - Event
-      summary: Get Event
-      description: Get Event
-      operationId: getEvent
-      parameters:
-        - name: id
-          in: query
-          description: Unique ID of Event
-          required: false
-          explode: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Event'
-        '405':
-          description: Invalid input
-      security:
-        - auth:
-            - read:calendar
-  /Event/list:
-    get:
-      tags:
-        - Event
-      summary: Get multiple Events
-      description: Get multiple Events
-      operationId: getListEvents
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: false
-          explode: true
-          schema:
-            type: string
-            default: available
-            enum:
-              - available
-              - pending
-              - sold
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Event'
-        '400':
-          description: Invalid status value
-      security:
-        - auth:
-            - read:calendar
-components:
-  schemas:
-    Event:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-  securitySchemes:
-    auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
-          scopes:
-            create:calendar: Create Calendar Events
-            read:calendar: Read Calendar Events
-            update:calendar: Update Calendar Events
-            delete:calendar: Delete Calendar Events
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/1Relation/1Relation-API/1.0.0"
+  }, {
+    "description" : "Development",
+    "url" : "https://dev.1relation.com/api/v1"
+  }, {
+    "description" : "Production",
+    "url" : "https://prod.1relation.com/api/v1"
+  } ],
+  "info" : {
+    "description" : "Use our API to do things within our platform",
+    "version" : "1.0.0",
+    "title" : "1Relation API",
+    "contact" : {
+      "email" : "contact@1relation.com"
+    },
+    "license" : {
+      "name" : "GNU GPLv3",
+      "url" : "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "Event",
+    "description" : "Calendar entries that are stored on each user"
+  }, {
+    "name" : "Item",
+    "description" : "Containers for information tied to a specific object eg. a customer"
+  } ],
+  "paths" : {
+    "/Event" : {
+      "put" : {
+        "tags" : [ "Event" ],
+        "summary" : "Update an existing Event",
+        "description" : "Update an existing Event by Id",
+        "operationId" : "updateEvent",
+        "requestBody" : {
+          "description" : "Update an existing Event",
+          "content" : {
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Event"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Pet not found"
+          },
+          "405" : {
+            "description" : "Validation exception"
+          }
+        },
+        "security" : [ {
+          "auth" : [ "create:calendar" ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "Event" ],
+        "summary" : "Create a new Event",
+        "description" : "Create a new Event",
+        "operationId" : "createEvent",
+        "requestBody" : {
+          "description" : "Create a new Event",
+          "content" : {
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Event"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "security" : [ {
+          "auth" : [ "update:calendar" ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Event" ],
+        "summary" : "Delete Event",
+        "description" : "Delete Event",
+        "operationId" : "deleteEvent",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Unique ID of Event",
+          "required" : false,
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "security" : [ {
+          "auth" : [ "delete:calendar" ]
+        } ]
+      },
+      "get" : {
+        "tags" : [ "Event" ],
+        "summary" : "Get Event",
+        "description" : "Get Event",
+        "operationId" : "getEvent",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Unique ID of Event",
+          "required" : false,
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        },
+        "security" : [ {
+          "auth" : [ "read:calendar" ]
+        } ]
+      }
+    },
+    "/Event/list" : {
+      "get" : {
+        "tags" : [ "Event" ],
+        "summary" : "Get multiple Events",
+        "description" : "Get multiple Events",
+        "operationId" : "getListEvents",
+        "parameters" : [ {
+          "name" : "status",
+          "in" : "query",
+          "description" : "Status values that need to be considered for filter",
+          "required" : false,
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "default" : "available",
+            "enum" : [ "available", "pending", "sold" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid status value"
+          }
+        },
+        "security" : [ {
+          "auth" : [ "read:calendar" ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Event" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "auth" : {
+        "type" : "oauth2",
+        "flows" : {
+          "implicit" : {
+            "authorizationUrl" : "https://petstore3.swagger.io/oauth/authorize",
+            "scopes" : {
+              "create:calendar" : "Create Calendar Events",
+              "read:calendar" : "Read Calendar Events",
+              "update:calendar" : "Update Calendar Events",
+              "delete:calendar" : "Delete Calendar Events"
+            }
+          }
+        }
+      },
+      "api_key" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "header"
+      }
+    }
+  }
+}
