@@ -18,9 +18,9 @@ info:
     url: 'https://www.gnu.org/licenses/gpl-3.0.en.html'
 tags:
   - name: Event
-    description: Events are calendar entries that are stored on each user                                                    
-  - description: Items holds information for each item                                                    
-    name: Item                                                    
+    description: Calendar entries that are stored on each user                                                    
+  - name: Item                                                    
+    description: Containers for information tied to a specific object eg. a customer                                                    
 paths:
   /Event:
     put:
