@@ -24,10 +24,10 @@
   } ],
   "tags" : [ {
     "name" : "Event",
-    "description" : "Events are calendar entries that are stored on each user"
+    "description" : "Calendar entries that are stored on each user"
   }, {
     "name" : "Item",
-    "description" : "Items holds information for each item"
+    "description" : "Containers for information tied to a specific object eg. a customer"
   } ],
   "paths" : {
     "/Event" : {
