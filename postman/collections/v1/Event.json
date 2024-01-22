@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "fe00fe1a-2792-42a2-845a-c3bd5707e47c",
+		"name": "v1/Event",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "13467580-fe00fe1a-2792-42a2-845a-c3bd5707e47c"
+	},
+	"item": [
+		{
+			"name": "Get Event",
+			"id": "545435c4-ed18-4278-af08-1cb87039127f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Public-Token",
+						"value": "{{publictoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-User",
+						"value": "{{userid}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{sessiontoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/{{version}}/Event/:eventId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{version}}",
+						"Event",
+						":eventId"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "520",
+							"description": "The Event ID you would like to get information from"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Event",
+			"id": "9e601989-84ba-4f98-9d3b-49209ec65d07",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Public-Token",
+						"value": "{{publictoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-User",
+						"value": "{{userid}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{sessiontoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Hello World",
+							"type": "text"
+						},
+						{
+							"key": "color",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "dateTimeSince",
+							"value": "2024-01-22 08:00",
+							"type": "text"
+						},
+						{
+							"key": "dateTimeUntil",
+							"value": "2024-01-22 09:00",
+							"type": "text"
+						},
+						{
+							"key": "eventRelations",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "eventIsAllday",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/{{version}}/Event",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{version}}",
+						"Event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event",
+			"id": "5e19dd87-55e0-4c0c-b680-f80344f960b9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Public-Token",
+						"value": "{{publictoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-User",
+						"value": "{{userid}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{sessiontoken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Hello World!",
+							"type": "text"
+						},
+						{
+							"key": "color",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "dateTimeSince",
+							"value": "2024-01-22 08:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "dateTimeUntil",
+							"value": "2024-01-22 09:00",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "eventRelations",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "eventIsAllday",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/{{version}}/Event/:eventId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{version}}",
+						"Event",
+						":eventId"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "520",
+							"description": "The Event ID of the Event you would like to update"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Event",
+			"id": "baf226ab-a3fd-4ae0-b93d-d1b842541b1e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Public-Token",
+						"value": "{{publictoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-User",
+						"value": "{{userid}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{sessiontoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/{{version}}/Event/:eventId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{version}}",
+						"Event",
+						":eventId"
+					],
+					"variable": [
+						{
+							"key": "eventId",
+							"value": "520",
+							"description": "The Event ID of the Event you would like to delete"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of Events",
+			"id": "61dac39f-848f-4e2d-b9a7-5616a181b675",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Public-Token",
+						"value": "{{publictoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-User",
+						"value": "{{userid}}",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{sessiontoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/{{version}}/Event?start=2024-01-01&end=2024-12-31",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{version}}",
+						"Event"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-01-01",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "2024-12-31",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{privatetoken}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{identifier}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1c54346-5c29-4992-ac26-21fd8c4caed3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "00345e0f-4888-40b4-9ac3-7a6bcf7d7da0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "35f433a4-bb06-41d4-9a6e-1183933aeaea",
+			"key": "version",
+			"value": "v1",
+			"type": "string"
+		}
+	]
+}
